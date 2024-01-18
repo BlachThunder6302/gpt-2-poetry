@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -6,23 +7,25 @@
   <style>
     body {
       font-family: sans-serif;
-      background-color: white;
+      background-color: black; /* Updated background color to black */
+      color: white; /* Updated text color to white */
       max-width: 30em;
+      margin: auto;
+      padding: 1em;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Added box shadow for a subtle effect */
     }
 
     select,
     button {
       font-size: 100%;
       max-width: 15em;
+      padding: 0.5em;
+      margin: 0.5em 0;
     }
 
     #title {
       font-size: 120%;
       font-weight: bold;
-    }
-
-    #about>p {
-      margin: 0.5em 0;
     }
 
     .section {
@@ -31,12 +34,31 @@
       padding: 0.5em;
       border-radius: 0.5em;
       font-family: 'EB Garamond', serif;
-      background-color: rgb(245, 245, 245);
+      background-color: rgb(30, 30, 30); /* Darker background color */
     }
 
     #poem {
       max-height: 7em;
       overflow: scroll;
+    }
+
+    /* Added styles for links */
+    a {
+      color: #66c2ff; /* Light blue color for links */
+    }
+
+    a:hover {
+      color: #33adff; /* Darker blue color on hover */
+    }
+
+    #thanks {
+      display: none;
+    }
+
+    /* Styling for the thanks section */
+    #thanks a {
+      color: #66c2ff; /* Light blue color for links in thanks section */
+      margin-right: 1em;
     }
   </style>
 </head>
@@ -81,13 +103,12 @@
     let generatedElt = document.querySelector("#generated");
 
     function convertNewlines(text) {
-      return text.split('\n').join('<br/>').split('<|endoftext|>')[0];
+      return text.split('\n').join('<br/>').split('')[0];
     }
 
     function update() {
       let key = selectPoems.value;
       let poem = poems[key];
-      // console.log(poem.url);
       poemElt.innerHTML = poem.poem.join('<br/>');
 
       let seed = selectSeeds.value;
